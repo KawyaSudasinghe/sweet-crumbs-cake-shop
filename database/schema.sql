@@ -44,3 +44,47 @@ CREATE TABLE product (
     is_available BOOLEAN NOT NULL DEFAULT TRUE,
     CONSTRAINT fk_product_category FOREIGN KEY (category_id) REFERENCES category(category_id) ON DELETE RESTRICT
 ) ENGINE=InnoDB;
+
+CREATE TABLE cart (
+    cart_id INT PRIMARY KEY AUTO_INCREMENT,
+    user_id INT NOT NULL UNIQUE,
+    updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    CONSTRAINT fk_cart_user FOREIGN KEY (user_id) REFERENCES `user`(user_id) ON DELETE CASCADE
+) ENGINE=InnoDB;
+
+CREATE TABLE cart_item (
+    cart_item_id INT PRIMARY KEY AUTO_INCREMENT,
+    cart_id INT NOT NULL,
+    product_id INT NOT NULL,
+    quantity INT NOT NULL DEFAULT 1,
+    inscription VARCHAR(200) NULL,
+    CONSTRAINT fk_cart_item_cart FOREIGN KEY (cart_id) REFERENCES cart(cart_id) ON DELETE CASCADE,
+    CONSTRAINT fk_cart_item_product FOREIGN KEY (product_id) REFERENCES product(product_id) ON DELETE RESTRICT,
+    CONSTRAINT chk_cart_item_qty CHECK (quantity > 0)
+) ENGINE=InnoDB;
+
+CREATE TABLE `order` (
+    order_id INT PRIMARY KEY AUTO_INCREMENT,
+    user_id INT NOT NULL,
+    address_id INT NULL,
+    promo_id INT NULL,
+    total_amount DECIMAL(10,2) NOT NULL,
+    delivery_type ENUM('nationwide_shipping','local_pickup') NOT NULL,
+    status ENUM('pending','confirmed','shipped','delivered','cancelled') NOT NULL DEFAULT 'pending',
+    placed_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT fk_order_user FOREIGN KEY (user_id) REFERENCES `user`(user_id) ON DELETE RESTRICT,
+    CONSTRAINT fk_order_address FOREIGN KEY (address_id) REFERENCES address(address_id) ON DELETE SET NULL,
+    CONSTRAINT fk_order_promo FOREIGN KEY (promo_id) REFERENCES promo_code(promo_id) ON DELETE SET NULL
+) ENGINE=InnoDB;
+
+CREATE TABLE order_item (
+    order_item_id INT PRIMARY KEY AUTO_INCREMENT,
+    order_id INT NOT NULL,
+    product_id INT NOT NULL,
+    quantity INT NOT NULL,
+    unit_price DECIMAL(10,2) NOT NULL,
+    inscription VARCHAR(200) NULL,
+    CONSTRAINT fk_order_item_order FOREIGN KEY (order_id) REFERENCES `order`(order_id) ON DELETE CASCADE,
+    CONSTRAINT fk_order_item_product FOREIGN KEY (product_id) REFERENCES product(product_id) ON DELETE RESTRICT,
+    CONSTRAINT chk_order_item_qty CHECK (quantity > 0)
+) ENGINE=InnoDB;
