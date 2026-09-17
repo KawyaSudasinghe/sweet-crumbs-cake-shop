@@ -41,7 +41,7 @@ No framework is used.
 4. Import `database/schema.sql` first.
 5. Import `database/seeds.sql` second.
 6. Copy `.env.example` and rename it to `.env`.
-7. copy and paste this secret key and public key in to the .env file
+7. copy and paste your secret key and publishable key in to the .env file
 8. Open `config/config.php` and confirm `BASE_URL` is `http://localhost/cake_shop_project`.
 9. Visit `http://localhost/cake_shop_project/`.
 
