@@ -63,7 +63,6 @@ All four members should coordinate changes to:
 ### Environment and API Key Security
 
 - `.env.example` contains only placeholder values for required environment variables and **can be committed to Git**.
-- `.env` contains actual API keys/secrets and **not committed to Git**.
-- Each team member must create their own local `.env` file based on `.env.example`.
+
 
 
