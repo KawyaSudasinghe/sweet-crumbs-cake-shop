@@ -1,6 +1,6 @@
 # Team File Responsibilities
 
-This is a normal project structure. The folders are organized by feature, not by member.
+This is a normal project structure. The folders are organized by feature not by member.
 
 ## Member 1 — SE/2023/027 - Sudasinghe. S. S. K
 
