@@ -5,6 +5,26 @@ SET FOREIGN_KEY_CHECKS = 0;
 DROP TABLE IF EXISTS review, payment, order_item, `order`, cart_item, cart, product, category, promo_code, address, `user`;
 SET FOREIGN_KEY_CHECKS = 1;
 
+CREATE TABLE `user` (
+    user_id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(150) NOT NULL UNIQUE,
+    password_hash VARCHAR(255) NOT NULL,
+    phone VARCHAR(20) NULL,
+    role ENUM('customer','admin') NOT NULL DEFAULT 'customer',
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB;
+
+CREATE TABLE address (
+    address_id INT PRIMARY KEY AUTO_INCREMENT,
+    user_id INT NOT NULL,
+    street VARCHAR(200) NOT NULL,
+    city VARCHAR(100) NOT NULL,
+    postal_code VARCHAR(20) NOT NULL,
+    is_default BOOLEAN NOT NULL DEFAULT FALSE,
+    CONSTRAINT fk_address_user FOREIGN KEY (user_id) REFERENCES `user`(user_id) ON DELETE CASCADE
+) ENGINE=InnoDB;
+
 CREATE TABLE category (
     category_id INT PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(100) NOT NULL UNIQUE,
