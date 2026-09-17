@@ -1,0 +1,23 @@
+# XAMPP / local files
+*.log
+
+# Environment / secrets
+.env
+.env.*
+!.env.example
+config/config.local.php
+
+# Stripe secrets
+stripe_secret.txt
+
+# IDE
+.vscode/
+.idea/
+
+# OS files
+Thumbs.db
+.DS_Store
+
+# Temporary files
+*.tmp
+*.temp
