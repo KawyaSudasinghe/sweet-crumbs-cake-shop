@@ -63,6 +63,15 @@ CREATE TABLE cart_item (
     CONSTRAINT chk_cart_item_qty CHECK (quantity > 0)
 ) ENGINE=InnoDB;
 
+CREATE TABLE promo_code (
+    promo_id INT PRIMARY KEY AUTO_INCREMENT,
+    code VARCHAR(50) NOT NULL UNIQUE,
+    discount_type ENUM('percentage','fixed') NOT NULL,
+    discount_value DECIMAL(10,2) NOT NULL,
+    valid_until DATE NULL,
+    is_active BOOLEAN NOT NULL DEFAULT TRUE
+) ENGINE=InnoDB;
+
 CREATE TABLE `order` (
     order_id INT PRIMARY KEY AUTO_INCREMENT,
     user_id INT NOT NULL,
@@ -87,15 +96,6 @@ CREATE TABLE order_item (
     CONSTRAINT fk_order_item_order FOREIGN KEY (order_id) REFERENCES `order`(order_id) ON DELETE CASCADE,
     CONSTRAINT fk_order_item_product FOREIGN KEY (product_id) REFERENCES product(product_id) ON DELETE RESTRICT,
     CONSTRAINT chk_order_item_qty CHECK (quantity > 0)
-) ENGINE=InnoDB;
-
-CREATE TABLE promo_code (
-    promo_id INT PRIMARY KEY AUTO_INCREMENT,
-    code VARCHAR(50) NOT NULL UNIQUE,
-    discount_type ENUM('percentage','fixed') NOT NULL,
-    discount_value DECIMAL(10,2) NOT NULL,
-    valid_until DATE NULL,
-    is_active BOOLEAN NOT NULL DEFAULT TRUE
 ) ENGINE=InnoDB;
 
 CREATE TABLE payment (
