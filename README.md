@@ -15,9 +15,6 @@ No framework is used.
 
 ## Main features
 
-- Sweet Crumbs pastel bakery storefront
-- Real bakery photographs from Unsplash
-- Cake-themed photographic hero background
 - Six product categories
 - 75 seeded products
 - Search and category filtering
@@ -41,7 +38,7 @@ No framework is used.
 4. Import `database/schema.sql` first.
 5. Import `database/seeds.sql` second.
 6. Copy `.env.example` and rename it to `.env`.
-7. copy and paste your secret key and publishable key in to the .env file
+7. Copy and paste your secret key and publishable key in to the .env file
 8. Open `config/config.php` and confirm `BASE_URL` is `http://localhost/cake_shop_project`.
 9. Visit `http://localhost/cake_shop_project/`.
 
@@ -49,7 +46,13 @@ The schema file intentionally drops/recreates the project tables, so importing i
 
 ## Images
 
-The seed data contains remote Unsplash image URLs. The browser therefore needs internet access to display the photographs. See `IMAGE_SOURCES.md` for the source pages.
+The project includes all product and category images in the `assets/images/` directory.
+
+- Category images are stored in `assets/images/categories/`.
+- Product images are stored in `assets/images/products/`.
+- The images are included locally in the repository, so an internet connection is not required to display the product and category photographs.
+
+See `IMAGE_SOURCES.md` for information about the original sources of the images.
 
 ## Stripe
 
