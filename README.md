@@ -2,6 +2,16 @@
 
 A PHP/MySQL online cake shop for the SENG 21253 Web Application Development project.
 
+## Live Website
+
+The completed Sweet Crumbs website is available online at:
+
+**https://sweetcrumbs.page.gd/**
+
+You can visit the live website here:
+
+[Sweet Crumbs — Online Cake Shop](https://sweetcrumbs.page.gd/)
+
 ## Technology
 
 - HTML
