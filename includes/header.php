@@ -20,7 +20,7 @@ $flashes = get_flashes();
 <header class="site-header">
     <div class="container nav-wrap">
         <a class="brand" href="<?= e(app_url('index.php')) ?>">
-            <span class="brand-mark">S</span>
+            <div class="brand-mark"></div>
             <span>Sweet Crumbs<small>Freshly made in Sri Lanka</small></span>
         </a>
         <button class="mobile-menu" type="button" aria-label="Open menu" data-mobile-menu><?= icon('menu') ?></button>
@@ -29,10 +29,23 @@ $flashes = get_flashes();
             <a href="<?= e(app_url('index.php')) ?>">Shop</a>
             <a href="<?= e(app_url('catalog/products.php')) ?>">Products</a>
             <?php if ($user): ?>
-                <a href="<?= e(app_url('cart/cart.php')) ?>" class="nav-icon" aria-label="Cart">
-                    <?= icon('cart') ?><span>Cart</span><b class="cart-count"><?= cart_count() ?></b>
-                </a>
-                <a href="<?= e(app_url('auth/profile.php')) ?>" class="nav-icon"><?= icon('user') ?><span><?= e(explode(' ', $user['name'])[0]) ?></span></a>
+            <a href="<?= e(app_url('cart/cart.php')) ?>" class="nav-icon" aria-label="Cart">
+                <?= icon('cart') ?><span>Cart</span><b class="cart-count"><?= cart_count() ?></b>
+            </a>
+            <a
+                href="<?= e(app_url('orders/orders.php')) ?>"
+                class="nav-icon"
+                aria-label="Orders"
+            >
+                <?= icon('box') ?><span>Orders</span>
+            </a>
+            <a
+                href="<?= e(app_url('auth/profile.php')) ?>"
+                class="nav-icon"
+            >
+                <?= icon('user') ?>
+                <span><?= e(explode(' ', $user['name'])[0]) ?></span>
+            </a>
                 <a href="<?= e(app_url('auth/logout.php')) ?>">Logout</a>
             <?php else: ?>
                 <a href="<?= e(app_url('auth/login.php')) ?>">Login</a>
