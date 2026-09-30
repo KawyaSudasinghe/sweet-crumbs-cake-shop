@@ -10,6 +10,8 @@ Work mainly on:
 - `auth/logout.php`
 - `auth/profile.php`
 - `auth/addresses.php`
+- `admin/login.php`
+- `admin/logout.php`
 - USER and ADDRESS sections of `database/schema.sql` and related seed data
 
 ## Member 2 — SE/2023/051 – Isiwari D.M
@@ -18,7 +20,8 @@ Work mainly on:
 - `index.php` catalogue/category presentation
 - `catalog/products.php`
 - `catalog/product.php`
-- CATEGORY and PRODUCT sections of `database/schema.sql` and `database/seeds.sql`
+- `admin/index.php`
+- CATEGORY and PRODUCT sections of `database/schema.sql` and `database/seeds.sql` `database/create_admin.sql`
 - Product/category images and catalogue filtering
 
 ## Member 3 — SE/2023/048 - I.D.N.Sewwandi
@@ -30,6 +33,10 @@ Work mainly on:
 - `orders/orders.php`
 - `orders/order.php`
 - `orders/order_success.php`
+- `orders/cancel_order.php`
+- `admin/order.php`
+- `admin/orders.php`
+- `admin/update_order.php`
 - CART, CART_ITEM, ORDER and ORDER_ITEM sections of the database
 
 ## Member 4 — SE/2023/030 - MEGALA M.
@@ -49,11 +56,15 @@ All four members should coordinate changes to:
   - `config.php`
   - `database.php`
 - `includes/`
+  - `admin.php`
   - `auth.php`
   - `footer.php`
   - `functions.php`
   - `header.php`
 - `assets/css/style.css`
 - `assets/js/app.js`
+- `assets/js/images/`
 - `database/schema.sql`
-- `database/seeds.sql`
+- `admin/`
+  - `footer.php`
+  - `header.php`
